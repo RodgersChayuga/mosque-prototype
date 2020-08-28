@@ -568,16 +568,17 @@ class BookASeatState extends State<BookASeat> implements HttpCallBack {
                           elevation: 1,
                           onPressed: isButtonEnabled
                               ? null
-                              : () {
+                              : () async{
+                            var connectivityResult =
+                            await (Connectivity()
+                                .checkConnectivity());
                                   setState(
-                                    () async {
+                                    (){
                                       if (_seat.text.isEmpty) {
                                         _validate = true;
                                         showToast("Select number of seats");
                                       } else if (_seat.text.isNotEmpty) {
-                                        var connectivityResult =
-                                            await (Connectivity()
-                                                .checkConnectivity());
+
                                         if (connectivityResult ==
                                             ConnectivityResult.mobile) {
                                           // I am connected to a mobile network.
