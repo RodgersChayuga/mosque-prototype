@@ -1,3 +1,4 @@
+import 'package:churchapp/mpesa/mpesa_page.dart';
 import 'package:churchapp/screens/booking_screen.dart';
 import 'package:churchapp/screens/status_screen.dart';
 import 'package:churchapp/screens/welcome_screen.dart';
@@ -19,8 +20,8 @@ class _SuccessfulNavBarState extends State<SuccessfulNavBar> {
   static List<Widget> _pages = <Widget>[
     //Add pages to appear on the App, via Navigation Bar
 
-    WelcomeScreen(),
     BookASeat(),
+    MpesaPage(),
     BookingStatus(),
   ];
 
@@ -38,22 +39,20 @@ class _SuccessfulNavBarState extends State<SuccessfulNavBar> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.sentiment_very_satisfied),
-            title: Text('Welcome'),
-          ),
+
           BottomNavigationBarItem(
             icon: Icon(Icons.event_note),
             title: Text('Reservation'),
           ),
           BottomNavigationBarItem(
+            icon: Icon(Icons.account_balance_wallet),
+            title: Text('Give Online'),
+          ),
+          BottomNavigationBarItem(
             icon: Icon(Icons.history),
             title: Text('Status'),
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.account_balance_wallet),
-            title: Text('Give'),
-          ),
+
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.teal,

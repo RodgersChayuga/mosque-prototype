@@ -38,13 +38,12 @@ class _BookedSuccessState extends State<BookedSuccess> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              'assets/images/dcu-logo.png',
+              'assets/images/church.png',
               fit: BoxFit.contain,
               height: 100,
             ),
             Center(
-              child: Text(
-                  "Deliverance Church Int'l Utawala\n-The Church of Choice-",
+              child: Text("The Mosque in Kenya",
                   textAlign: TextAlign.center,
                   style: GoogleFonts.openSans(
                       color: Colors.deepPurple,
@@ -85,7 +84,7 @@ class _BookedSuccessState extends State<BookedSuccess> {
                             ),
                             SizedBox(height: 10),
                             Text(
-                              'DELIVERANCE CHURCH INT\'l UTAWALA',
+                              'THE MOSQUE IN KENYA',
                               textAlign: TextAlign.center,
                               style: GoogleFonts.openSans(
                                   color: Colors.deepPurple,

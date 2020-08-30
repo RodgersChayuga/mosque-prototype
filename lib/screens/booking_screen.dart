@@ -283,24 +283,10 @@ class BookASeatState extends State<BookASeat> implements HttpCallBack {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Center(
-                                        child: Text(
-                                          "Christians Church Kenya\nSeating Structure",
-                                          textAlign: TextAlign.center,
-                                          style: GoogleFonts.openSans(
-                                              color: Colors.black87,
-                                              fontSize: 21,
-                                              fontWeight: FontWeight.w600),
-                                        ),
-                                      ),
-                                    ),
                                     SizedBox(
                                       height: 10,
                                     ),
-                                    Image.asset(
-                                        "assets/images/seats-structure.png")
+                                    Image.asset("assets/images/church.png")
                                   ],
                                 ),
                               ),
@@ -332,7 +318,7 @@ class BookASeatState extends State<BookASeat> implements HttpCallBack {
                                 ),
                               ),
                               RadioListTile(
-                                title: const Text('1st Service'),
+                                title: const Text('1st Session'),
                                 value: Service.FIRST,
                                 groupValue: _serviceValue,
                                 onChanged: (Service value) async {
@@ -364,7 +350,7 @@ class BookASeatState extends State<BookASeat> implements HttpCallBack {
                                 },
                               ),
                               RadioListTile(
-                                title: const Text('Sunday school'),
+                                title: const Text('2nd Session'),
                                 value: Service.SECOND,
                                 groupValue: _serviceValue,
                                 onChanged: (Service value) async {
@@ -395,7 +381,7 @@ class BookASeatState extends State<BookASeat> implements HttpCallBack {
                                 },
                               ),
                               RadioListTile(
-                                title: const Text('2nd Service'),
+                                title: const Text('3rd Session'),
                                 value: Service.THIRD,
                                 groupValue: _serviceValue,
                                 onChanged: (Service value) async {
@@ -427,7 +413,7 @@ class BookASeatState extends State<BookASeat> implements HttpCallBack {
                               ),
                               RadioListTile(
                                 title: const Text(
-                                  'Teen\'s service',
+                                  '4th Session',
                                 ),
                                 value: Service.FOURTH,
                                 groupValue: _serviceValue,
@@ -568,17 +554,15 @@ class BookASeatState extends State<BookASeat> implements HttpCallBack {
                           elevation: 1,
                           onPressed: isButtonEnabled
                               ? null
-                              : () async{
-                            var connectivityResult =
-                            await (Connectivity()
-                                .checkConnectivity());
+                              : () async {
+                                  var connectivityResult = await (Connectivity()
+                                      .checkConnectivity());
                                   setState(
-                                    (){
+                                    () {
                                       if (_seat.text.isEmpty) {
                                         _validate = true;
                                         showToast("Select number of seats");
                                       } else if (_seat.text.isNotEmpty) {
-
                                         if (connectivityResult ==
                                             ConnectivityResult.mobile) {
                                           // I am connected to a mobile network.

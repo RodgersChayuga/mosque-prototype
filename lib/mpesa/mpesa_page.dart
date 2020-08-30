@@ -11,6 +11,7 @@ import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:progress_dialog/progress_dialog.dart';
+import 'package:dropdown_formfield/dropdown_formfield.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 export 'mpesa.dart';
@@ -78,7 +79,6 @@ class _MpesaPageState extends State<MpesaPage> {
   lipaNaMpesa() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
 
-
     final form = _formKey.currentState;
     if (form.validate() && _validate == false) {
       setState(() {
@@ -106,6 +106,16 @@ class _MpesaPageState extends State<MpesaPage> {
         MaterialPageRoute(builder: (context) => RouteController()),
       );
     });
+  }
+
+  String _myActivity;
+  String _myActivityResult;
+
+  @override
+  void initState() {
+    super.initState();
+    _myActivity = '';
+    _myActivityResult = '';
   }
 
   @override
@@ -144,8 +154,7 @@ class _MpesaPageState extends State<MpesaPage> {
                 height: 100,
               ),
               Center(
-                child: Text(
-                    "Give Tithe and/or Offering\nKindly use your m-pesa number",
+                child: Text("Give Online\nKindly use your m-pesa number",
                     textAlign: TextAlign.center,
                     style: GoogleFonts.openSans(
                         color: Colors.green,
@@ -169,7 +178,52 @@ class _MpesaPageState extends State<MpesaPage> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
                         SizedBox(
-                          height: 30,
+                          height: 10,
+                        ),
+                        Container(
+                          padding:
+                              EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                          decoration: BoxDecoration(
+                              border: Border.all(color: Color(0xffff7f00)),
+                              borderRadius: BorderRadius.circular(20)),
+                          child: DropDownFormField(
+                            // titleText: 'Donating for',
+                            hintText: 'Giving for...',
+                            value: _myActivity,
+                            onSaved: (value) {
+                              setState(() {
+                                _myActivity = value;
+                              });
+                            },
+                            onChanged: (value) {
+                              setState(() {
+                                _myActivity = value;
+                              });
+                            },
+                            dataSource: [
+                              {
+                                "display": "Offering",
+                                "value": "Offering",
+                              },
+                              {
+                                "display": "Tithe",
+                                "value": "Tithe",
+                              },
+                              {
+                                "display": "Development",
+                                "value": "Development",
+                              },
+                              {
+                                "display": "Needy Children",
+                                "value": "Needy Children",
+                              },
+                            ],
+                            textField: 'display',
+                            valueField: 'value',
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10,
                         ),
                         Container(
                           padding:
@@ -182,7 +236,7 @@ class _MpesaPageState extends State<MpesaPage> {
                             keyboardType: TextInputType.number,
                             onSaved: (val) => _number = val,
                             controller: phoneNumber,
-                            style: TextStyle(color: Colors.white,fontSize: 18),
+                            style: TextStyle(color: Colors.white, fontSize: 18),
                             decoration: InputDecoration(
                                 contentPadding:
                                     EdgeInsets.symmetric(horizontal: 10),
@@ -197,7 +251,7 @@ class _MpesaPageState extends State<MpesaPage> {
                           ),
                         ),
                         SizedBox(
-                          height: 30,
+                          height: 10,
                         ),
                         Container(
                           padding:
@@ -210,10 +264,10 @@ class _MpesaPageState extends State<MpesaPage> {
                             keyboardType: TextInputType.number,
                             onSaved: (val) => _amount = val,
                             controller: amount,
-                            style: TextStyle(color: Colors.white,fontSize: 18),
+                            style: TextStyle(color: Colors.white, fontSize: 18),
                             decoration: InputDecoration(
-                                contentPadding:
-                                    EdgeInsets.symmetric(horizontal: 10),
+                                contentPadding: EdgeInsets.symmetric(
+                                    horizontal: 10, vertical: 5),
                                 labelText: 'Amount',
                                 labelStyle: TextStyle(color: Colors.white),
                                 icon: Icon(
@@ -225,7 +279,7 @@ class _MpesaPageState extends State<MpesaPage> {
                           ),
                         ),
                         SizedBox(
-                          height: 30,
+                          height: 15,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,

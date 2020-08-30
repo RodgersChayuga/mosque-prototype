@@ -1,5 +1,6 @@
 import 'package:churchapp/screens/booked_successful.dart';
 import 'package:churchapp/screens/navigation_bar.dart';
+import 'mpesa/mpesa_page.dart';
 import 'registration/login_screen.dart';
 import 'registration/signup_screen.dart';
 import 'package:churchapp/screens/survey.dart';
@@ -19,8 +20,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.teal,
       ),
+//      initialRoute: 'MpesaPage',
       initialRoute: 'LoadingScreen',
       routes: {
+        'MpesaPage': (context) => MpesaPage(),
         'SurveyQuiz': (context) => SurveyQuiz(),
         'LoadingScreen': (context) => LoadingScreen(),
         'RouteController': (context) => RouteController(),

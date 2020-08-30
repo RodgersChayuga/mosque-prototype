@@ -42,7 +42,7 @@ class _MyNavBarState extends State<MyNavBar> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.account_balance_wallet),
-            title: Text('Give'),
+            title: Text('Give Online'),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.history),
